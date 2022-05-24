@@ -1,0 +1,63 @@
+.container {
+	margin-right:auto;
+	margin-left:auto;
+	display:flex;
+	justify-content:center;
+	min-height:100vh;
+}
+
+body{
+    background-color: orangered;
+    background-position: center;
+    background-size: cover;
+    font-family: sans-serif;
+    margin-top: 20px;
+    }
+
+#myInput {
+    background-position: 10px 12px; /* Position the search icon */
+    background-repeat: no-repeat; /* Do not repeat the icon image */
+    width: 93%; /* Full-width */
+    font-size: 16px; /* Increase font-size */
+    padding: 12px 20px 12px 40px; /* Add some padding */
+    border: 1px solid #ddd; /* Add a grey border */
+    margin-bottom: 12px; /* Add some space below the input */
+    }
+
+#geri{
+    padding: 5px;
+    display: inline-block;
+  border-radius: 4px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+  border:none;
+    color: black;
+    font-size: 1rem;
+}
+
+span{
+    
+    border: thin solid black;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+}
+
+td{
+    border:thin solid black;
+    align-items: center;
+    justify-content: center;
+
+}
+
+table {
+	width:100%;
+	border:1px solid;
+    align-items: center;
+    justify-content:center;
+}

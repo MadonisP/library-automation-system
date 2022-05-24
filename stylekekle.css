@@ -1,0 +1,136 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+background-color: orangered;
+background-position: center;
+background-size: cover;
+font-family: sans-serif;
+margin-top: 40px;
+}
+
+.ust-cont{
+width: auto;
+height: auto;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+.ust-btn{
+    padding: 5px;
+    display: inline-block;
+  border-radius: 4px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+
+.ust-btn span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+
+  .ust-btn span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+
+  .ust-btn:hover span {
+    padding-right: 25px;
+  }
+
+  .ust-btn:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+
+.container{
+    background-color: rgb(0, 0, 0, 0.15);
+    width: auto;
+    max-width: 80%;
+    margin: auto;
+    border-radius:15px 15px 0px 0px ;
+    
+}
+
+#geri{
+    width: 25px;
+    border:none;
+    color: black;
+    font-size: 1rem;
+}
+
+#duzenle{
+
+    border:none;
+    color: black;
+    font-size: 1rem;
+}
+
+#sil{
+
+    border:none;
+    color: black;
+    font-size: 1rem;
+}
+
+form,span{
+    
+    border: thin solid black;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+}
+
+input[type=button],input[type=text]{
+
+    margin: 0.25rem;
+}
+
+h3,h4,h5,td{
+    text-align: center;
+}
+.baslik{
+    width: auto;
+    background-color: rgb(0, 0, 0, 6);
+    margin: auto;
+    color: #FFFFFF;
+    padding: 10px 0px 10px 0px;
+    text-align: center;
+    border-radius:15px 15px 0px 0px ;
+}
+
+form>label,input,td,th{
+    border-right: thin solid black;
+    border-bottom: thin solid black;
+    padding: 0.25rem;
+}
+
+#btnEkle{
+    grid-column: 1/3;
+}
+#kitapListesi{
+    width: 100%;
+    grid-column: 1/3;
+    
+}
+
+td img{
+    width: 1rem;
+    height: 1rem;
+    margin: 0 0.25rem;
+}

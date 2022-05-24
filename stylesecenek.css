@@ -1,0 +1,108 @@
+body{
+    letter-spacing: 4px;
+    background-color: orangered;
+}
+
+.container{
+    display:flex ;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+}
+
+.button1{
+    width:250px;
+    height:100px;
+    border:none;
+    color: white;
+    background-color:#f4a460;
+    border-radius: 4;
+    box-shadow: inset 0 0 0 0 #f0903c;
+    transition: ease-out 0.3s;
+    font-size: 2rem;
+    outline: none;
+}
+
+.button1:hover{
+    box-shadow: inset 300px 0 0 0 #f0903c;
+    cursor: pointer;
+    color: #000;
+}
+
+.button2{
+    width:250px;
+    height:100px;
+    border:none;
+    color: white;
+    background-color:#f4a460;
+    border-radius: 4;
+    box-shadow: inset 0 0 0 0 #f0903c;
+    transition: ease-out 0.3s;
+    font-size: 2rem;
+    outline: none;
+}
+
+.button2:hover{
+    box-shadow: inset 0 0 0 300px #f0903c;
+    cursor: pointer;
+    color: #000;
+}
+
+.button3{
+    width:250px;
+    height:100px;
+    border:none;
+    color: white;
+    background-color:#f4a460;
+    border-radius: 4;
+    box-shadow: inset 0 0 0 0 #f0903c;
+    transition: ease-out 0.3s;
+    font-size: 2rem;
+    outline: none;
+}
+
+.button3:hover{
+    box-shadow: inset 0 0 0 300px #f0903c;
+    cursor: pointer;
+    color: #000;
+}
+
+.button4{
+    width:250px;
+    height:100px;
+    border:none;
+    color: white;
+    background-color:#f4a460;
+    border-radius: 4;
+    box-shadow: inset 0 0 0 0 #f0903c;
+    transition: ease-out 0.3s;
+    font-size: 2rem;
+    outline: none;
+}
+
+.button4:hover{
+    box-shadow: inset 0 0 0 300px #f0903c;
+    cursor: pointer;
+    color: #000;
+}
+
+.button5{
+    width:250px;
+    height:100px;
+    border:none;
+    color: white;
+    background-color:#f4a460;
+    border-radius: 4;
+    box-shadow: inset 0 0 0 0 #f0903c;
+    transition: ease-out 0.3s;
+    font-size: 2rem;
+    outline: none;
+}
+
+.button5:hover{
+    box-shadow: inset -300px 0 0 0 #f0903c;
+    cursor: pointer;
+    color: #000;
+}

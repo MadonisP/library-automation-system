@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sil Penceresi</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        <script src="baglanti.js"></script>
+</head>
+
+<body>
+    <div class="update-container container-fluid d-flex flex-column justify-content-center align-items-center">
+        <div class="card shadow pt-2 pb-2" style="width: 30rem; background-color: orangered;">
+            <div class="card-body">
+                <h5 class="card-title">kitap "isbn" giriniz</h5>
+                <input type="number" class="form-control mt-3 mb-3" id="silValue" />
+                <a href="#" class="card-link btn btn-sm btn-outline-danger-danger" id="vazgecBtn">Vazgeç</a>
+                <a href="#" class="card-link btn btn-sm btn-outline-warning" id="silBtn">Sil</a>
+                <p id="innerYazi"> Herhangi bir kitap silmediniz</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        const electron = require("electron");
+
+        const { ipcRenderer } = electron;
+
+        let innerYazi=document.querySelector("#innerYazi");
+        let vazgecBtn = document.querySelector("#vazgecBtn");
+        
+        //kapatmak için vazgec butonu
+        vazgecBtn.addEventListener("click", () => {
+            ipcRenderer.send("pencere:close");
+        });
+
+
+        //sil butonu datadan veri siliyor
+        document.getElementById("silBtn").addEventListener("click", function (event) {
+            let silValues = document.getElementById("silValue").value;
+            var sql = "DELETE  FROM kitaplarvt WHERE isbn_no = '" + silValues + "'";
+                con.query(sql, function (err, result) {
+                    if (err) throw err;
+                else {
+                    console.log("1 record deleted"); 
+                    console.log(silValues);
+                    console.log(result);
+                    innerYazi.innerHTML=silValues+ " isbnli kitap silinmiştir.";
+                }
+            });
+        });
+       
+
+
+    </script>
+</body>
+
+</html>

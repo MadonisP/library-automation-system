@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kütüphane Kitap Ara</title>
+    <script src="baglanti.js"></script>
+    <link rel="stylesheet" href="stylekara.css">
+
+</head>
+
+<body>
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="kitap adı üzerinden aramaya yapabiliriniz...">
+    <div class="container">
+        <button id="geri" onclick="geri()"><span>X</span></button>
+        <table id="kitapListesi">
+            <tr><span id="ust">
+                    <th>ID</th>
+                    <th>Kitap Adı</th>
+                    <th>Kitap Yazarı</th>
+                    <th>Kitap No</th>
+                    <th>TC no</th>
+                    <th>iade zamanı</th>
+                    <th>alici ismi</th>
+                    <th>alici tel</th>
+                </span>
+            </tr>
+            <script>
+                //devam niteliğinde datamızdan veri çekip buraya yazdırıyoruz
+                const db = require("./baglanti").db;
+                db.query("SELECT * FROM odunckitap", function (err, result, fields) {
+                    if (err) throw err;
+                    Object.keys(result).forEach(function (key) {
+                        var row = result[key];
+                        console.log(row.id)
+                        console.log(row.isbn_no)
+                        const tablo = document.getElementById("kitapListesi");
+                        const satir = document.createElement("tr");
+                        satir.innerHTML =
+                            `<td>${row.id}</td>
+                            <td>${row.kitap_adi}</td>
+                            <td>${row.kitap_yazari}</td>
+                            <td>${row.isbn_no}</td>
+                            <td>${row.kul_tc}</td>
+                            <td>${row.iadetarihi}</td>
+                            <td>${row.alici_ismi}</td>
+                            <td>${row.alici_tel}</td>`;
+                        tablo.appendChild(satir);
+                    });
+                });
+
+            </script>
+        </table>
+    </div>
+    <script>
+        function geri() {
+            history.back()
+        }
+        //burası da arama butonu
+        function myFunction() {
+           
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("kitapListesi");
+            tr = table.getElementsByTagName("tr");
+
+           
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[1];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+
+
+
+    </script>
+</body>
+
+</html>

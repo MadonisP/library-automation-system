@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ödünç Kitap Ver</title>
+    <link rel='stylesheet' type='text/css' href='stylekekle.css'>
+    <script src="baglanti.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="ust-cont">
+            <button style="width:60px" class="ust-btn" id="geri" onclick="geri()"><span>X</span></button>
+        </div>
+        <h3 class="baslik">KİTAP GERİ ALMA FORMU</h3>
+
+        <form id="formKitap">
+
+            <label for="txtKitapAdi">Kitap adı:</label>
+            <input type="text" name="" id="txtKitapAdi">
+            <label for="txtKitapYazari">Kitap yazarı:</label>
+            <input type="text" name="" id="txtKitapYazari">
+            <label for="txtKitapISBN">ISBN No:</label>
+            <input type="number" name="" id="txtKitapISBN">
+
+            <input type="submit" value="Kitap al" id="btnEkle">
+
+        </form>
+        <span>
+            <table id="kitapListesi">
+                <tr>
+                    <th>Kitap Adı</th>
+                    <th>Kitap Yazarı</th>
+                    <th>ISBN No</th>
+                </tr>
+
+            </table>
+        </span>
+
+        <h5 id="sonuc">Henüz kitap almadınız</h5>
+
+
+        <script>
+            //kitap iade yapılınca odunc kitaptan silip kütüphane veri tabanına kaydediyoruz
+            document.getElementById("formKitap").addEventListener("submit", function (event) {
+
+                let txtKitapAdim = document.getElementById("txtKitapAdi").value;
+                let txtKitapYazarim = document.getElementById("txtKitapYazari").value;
+                let txtKitapISBN1 = document.getElementById("txtKitapISBN").value;
+
+                var sql = "DELETE  FROM odunckitap WHERE isbn_no = '" + txtKitapISBN1 + "'";
+                con.query(sql, function (err, result) {
+                    if (err) throw err;
+                    else {
+                        console.log("1 record deleted");
+                        var sqlin = `INSERT INTO kitaplarvt (kitap_adi, kitap_yazari, isbn_no) VALUES ('${txtKitapAdim}', '${txtKitapYazarim}', '${txtKitapISBN1}')`
+                        con.query(sqlin, function (err, result) {
+                            if (err) throw err;
+                            console.log("1 record inserted, ID: " + result.insertId);
+                        });
+                    }
+                });
+
+
+
+            });
+
+
+
+            function geri() {
+                history.back()
+            }
+        </script>
+        <script src='script.js'></script>
+</body>
+
+</html>

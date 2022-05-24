@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Kütüphane Uygulaması With Electron</title>
+    <link rel='stylesheet' type='text/css' href='stylekekle.css'>
+    <script src="baglanti.js"></script>
+    <style>
+        .success, .error {
+          color: white;
+          padding: 5px;
+          margin: 5px 0 15px 0;
+        }
+    
+        .success {
+          background: green;
+        }
+    
+        .error {
+          background: red;
+        }
+      </style>
+
+
+</head>
+<body>
+
+    <div class="container">
+      <div class="ust-cont">
+      <button style="width:60px" class="ust-btn" id="geri" onclick="geri()"><span>X</span></button>
+      <div class="right-top" >
+      <button class="ust-btn" id="sil"><span>Sil</span></button>
+      </div>
+    </div>
+        <h3 class="baslik">KİTAP EKLEME FORMU</h3>
+      
+        <form id="formKitap">
+    
+            <label for="txtKitapAdi">Kitap adı:</label>
+            <input type="text" name="" id="txtKitapAdi">
+            <label for="txtKitapYazari">Kitap yazarı:</label>
+            <input type="text" name="" id="txtKitapYazari">
+            <label for="txtKitapISBN">ISBN No:</label>
+            <input type="number" name="" id="txtKitapISBN">
+     
+
+            <input type="submit" value="Kitap Ekle" id="btnEkle">
+
+        </form>
+      
+        <span>
+            <table id="kitapListesi">
+                <tr>
+                    <th>Kitap Adı</th>
+                    <th>Kitap Yazarı</th>
+                    <th>ISBN No</th>
+                </tr>
+               
+            </table>
+        </span>
+      
+        <h5 id="sonuc">Henüz hiç bir kitap eklemediniz!</h5>
+
+    </div>
+    <script>
+      let silEkran=document.querySelector("#sil");//verileri eklediğimiz script
+      document.getElementById("formKitap").addEventListener("submit",function (event) {
+
+      let txtKitapAdim=document.getElementById("txtKitapAdi").value;
+      let txtKitapYazarim=document.getElementById("txtKitapYazari").value;
+      let txtKitapISBN1=document.getElementById("txtKitapISBN").value;
+     
+
+      var sql=`INSERT INTO kitaplarvt (kitap_adi, kitap_yazari, isbn_no) VALUES ('${txtKitapAdim}', '${txtKitapYazarim}', ${txtKitapISBN1})`
+      con.query(sql, function (err, result) {
+        if(err)throw err;
+        console.log("1 record inserted, ID: " + result.insertId);
+      });
+    })
+
+    const electron =require("electron");//ipcRenderer ile electrona bilgi gönderip alabiliyoruz
+    const{ipcRenderer}=electron;
+
+    silEkran.addEventListener("click",()=>{//silEkrana basınca yeni pencere aç dedik burada
+      ipcRenderer.send("key:newWindow",true);
+    })
+
+      function geri(){
+        history.back()
+      }
+
+
+    </script>
+    <script src='script.js'></script>
+</body>
+
+</html>

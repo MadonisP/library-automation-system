@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>İşlem Seç</title>
+  <link rel="stylesheet" href="stylesecenek.css">
+</head>
+
+<body>
+  <div class="container">
+    <button type="button" class="button1" id="btn-1">
+      <span class="button__text">Kitap Ekle</span>
+      <span class="button__icon">
+        <ion-icon name="add-circle"></ion-icon>
+      </span>
+    </button>
+    <button type="button" class="button2" id="btn-2">
+      <span class="button__text">Ödünç Kitap Ver</span>
+      <span class="button__icon">
+        <ion-icon name="book"></ion-icon>
+      </span>
+    </button>
+    <button type="button" class="button3" id="btn-3">
+      <span class="button__text">Kitap Ara</span>
+      <span class="button__icon">
+        <ion-icon name="search"></ion-icon>
+      </span>
+      <button type="button" class="button4" id="btn-4">
+        <span class="button__text">Ödünç kitaplar</span>
+        <span class="button__icon">
+          <ion-icon name="hand-left-outline"></ion-icon>
+        </span>
+      </button>
+      <button type="button" class="button5" id="btn-5">
+        <span class="button__text">kitap iade</span>
+        <span class="button__icon">
+          <ion-icon name="play-back-outline"></ion-icon>
+        </span>
+      </button>
+  </div>
+  </button>
+  <script>
+    //yönlendirmeleri yapıyoruz
+    document.querySelector("#btn-1").onclick = function () {
+      window.location.href = "index.html";
+    }
+    document.querySelector("#btn-2").onclick = function () {
+      window.location.href = "kitapver.html";
+    }
+    document.querySelector("#btn-3").onclick = function () {
+      window.location.href = "kitapara.html";
+    }
+    document.querySelector("#btn-4").onclick = function () {
+      window.location.href = "oduncara.html";
+    }
+    document.querySelector("#btn-5").onclick = function () {
+      window.location.href = "kitapdon.html";
+    }
+  </script>
+  <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

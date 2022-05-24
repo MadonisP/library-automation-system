@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libary Login Form</title>
+    <link rel="stylesheet" href="stylelogin.css">
+	<script src="baglanti.js"></script>
+</head>
+<body>
+    <div class="container">
+		<h1 class="label">User Login</h1>
+		<form class="login_form" action="secenek.html" method="post"  id="girisFormu">
+			<div class="font">Email</div>
+			<input autocomplete="off" type="text" id="email">
+			<div id="error">Email veya parola uyuşmuyor size verilen bilgileri kontrol ediniz.</div>
+			<div class="font font2">Parola</div>
+			<input type="password" id="sifre">
+			<button type="submit">Giriş</button>
+		</form>
+	</div>	
+	<script>
+    //giriş formu denetleyici
+		document.getElementById("girisFormu").addEventListener("submit",function(event)
+                {
+                    event.preventDefault();
+                    let email = document.getElementById("email").value;
+                    let sifre = document.getElementById("sifre").value;
+                    console.log(email+"-"+sifre);
+      let sorgu = "SELECT * FROM `kullanici` WHERE `kullanici_adi` = '"+email+"' AND `sifre` = '"+sifre+"'";
+      con.query(sorgu, function (err, result) {
+                        if (err) throw err;
+                        if (result.length>0)
+                        {
+                          console.log("Başarılı");
+							window.location="secenek.html";
+                        }
+                        else
+                        {
+                          
+                          console.log(hata);
+                          let hata=document.getElementById("error");
+                        }
+                        });
+                    }
+            );
+	</script>
+</body>
+</html>
